@@ -62,7 +62,14 @@ extension GameViewController: GameSessionDelegate {
         let resultVC = storyBoard.instantiateViewController(withIdentifier: "GameResultViewController") as! GameResultViewController
         resultVC.win = win
         resultVC.correctAnswersCount = result
-        self.present(resultVC, animated: true, completion: nil)
+//        self.present(resultVC, animated: true) {
+//            self.dismiss(animated: false)
+//        }
+        
+        let questionVC = self
+        self.present(resultVC, animated: true) {
+            questionVC.dismiss(animated: false)
+        }
     }
     
     func showQuestion(question: Question) {
